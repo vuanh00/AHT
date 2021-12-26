@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+         <add id="AHT_SaleAgent::filter" title="Commission Report" translate="title" module="AHT_SaleAgent" sortOrder="10" parent="Magento_Reports::report" resource="AHT_SaleAgent::filter"/>
+        <add id="AHT_Ui::filterSKU" title="Filter Product SKU" module="AHT_SaleAgent" sortOrder="11" parent="AHT_SaleAgent::filter" action="saleagent/filter/sku" resource="AHT_Ui::filterSKU"/>
+        <add id="AHT_Ui::filterEmail" title="Filter Account Email" module="AHT_SaleAgent" sortOrder="11" parent="AHT_SaleAgent::filter" action="saleagent/filter/email" resource="AHT_Ui::filterEmail"/>
+
+    </menu>
+</config>

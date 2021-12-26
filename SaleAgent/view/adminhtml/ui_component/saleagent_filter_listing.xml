@@ -1,0 +1,191 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">saleagent_filter_listing.saleagent_filter_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>ui_post_columns</spinner>
+		<deps>
+			<dep>saleagent_filter_listing.saleagent_filter_listing_data_source</dep>
+		</deps>
+		<!-- <buttons>
+			<button name="add">
+				<url path="*/*/newaction"/>
+				<class>primary</class>
+				<label translate="true">Add new Post</label>
+			</button>
+		</buttons> -->
+	</settings>
+	<dataSource name="saleagent_filter_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">entity_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>AHT_SaleAgent::filter</aclResource>
+		<dataProvider name="saleagent_filter_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>entity_id</requestFieldName>
+				<primaryFieldName>entity_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		 <filterSearch name="fulltext"/>
+		<filters name="listing_filters"/>
+		<!-- <massaction name="listing_massaction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="ui/post/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+			<action name="disable">
+                <settings>
+                    <url path="ui/post/massDisable"/>
+                    <type>disable</type>
+                    <label translate="true">Disable</label>
+                </settings>
+            </action>
+            <action name="enable">
+                <settings>
+                    <url path="ui/post/massEnable"/>
+                    <type>enable</type>
+                    <label translate="true">Enable</label>
+                </settings>
+            </action>
+            <action name="edit">
+                <settings>
+                    <callback>
+                        <target>editSelected</target>
+                        <provider>ui_post_listing.ui_post_listing.ui_post_columns_editor</provider>
+                    </callback>
+                    <type>edit</type>
+                    <label translate="true">Edit</label>
+                </settings>
+            </action>
+        </massaction> -->
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="ui_post_columns">
+		<settings>
+			<editorConfig>
+				<param name="selectProvider" xsi:type="string">saleagent_filter_listing.saleagent_filter_listing.ui_post_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">entity_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" xsi:type="url" path="ui/post/inlineedit"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">ui_post_listing.ui_post_listing.ui_post_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		
+		<!-- <actionsColumn name="actions" class="AHT\Ui\Ui\Component\Listing\Column\PostActions" sortOrder="6">
+			<settings>
+				<indexField>entity_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn> -->
+		<selectionsColumn name="ids" sortOrder="1">
+			<settings>
+				<indexField>entity_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="entity_id" sortOrder="2">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		
+		<!-- <column name="images" class="AHT\Ui\Ui\Component\Listing\Column\Image" sortOrder="3">
+			<settings>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">3</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="has_preview" xsi:type="string">1</item>
+					<item name="resizeEnabled" xsi:type="boolean">true</item>
+					<item name="resizeDefaultWidth" xsi:type="string">107</item>
+                    <item name="label" xsi:type="string" translate="true">Images</item>
+
+                </item>
+            </argument>
+        </column> -->
+		<column name="productname" sortOrder="4">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Product Name</label>
+				<!-- <editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor> -->
+			</settings>
+		</column>
+		<column name="order_item_sku" sortOrder="5">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">SKU</label>
+				<!-- <editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor> -->
+			</settings>
+		</column>
+        <column name="order_item_price" sortOrder="5">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">SKU</label>
+			</settings>
+		</column>
+ 		<column name="commission_type" sortOrder="5">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Commission Type</label>
+			</settings>
+		</column>
+
+        <column name="commission_value" sortOrder="5">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Commission Value</label>
+			</settings>
+		</column>
+
+        
+	</columns>
+
+</listing>

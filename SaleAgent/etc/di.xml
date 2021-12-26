@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- <type name="Magento\Customer\Model\Data\Customer">
+        <plugin name="AHT_SaleAgent_Plugin"
+                type="AHT\SaleAgent\Plugin\CustomerInfo" sortOrder="10" />
+    </type> -->
+    <preference for="Magento\Theme\Block\Html\Header" type="AHT\SaleAgent\Block\Header" />
+    <virtualType name="AHT\SaleAgent\Model\ResourceModel\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">table_saleagent</argument>
+			<argument name="resourceModel" xsi:type="string">AHT\SaleAgent\Model\ResourceModel\Post\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="saleagent_filter_listing_data_source" xsi:type="string">AHT\SaleAgent\Model\ResourceModel\Post\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

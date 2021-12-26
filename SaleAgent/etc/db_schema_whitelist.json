@@ -1,0 +1,16 @@
+{
+    "table_saleagent": {
+        "column": {
+            "entity_id": true,
+            "order_id": true,
+            "order_item_id": true,
+            "order_item_sku": true,
+            "order_item_price": true,
+            "commission_type": true,
+            "commission_value": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
