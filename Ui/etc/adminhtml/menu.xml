@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="AHT_Ui::test_id" title="Blog" module="AHT_Ui" sortOrder="10" resource="AHT_Ui::test_id"/>
+        <add id="AHT_Ui::ui_id" title="Ui blog" module="AHT_Ui" sortOrder="11" parent="AHT_Ui::test_id" action="ui/post/index" resource="AHT_Ui::ui_id"/>
+    </menu>
+</config>
