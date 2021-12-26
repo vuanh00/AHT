@@ -1,0 +1,21 @@
+
+<?php $post = $block->getPost() ?>
+<h2>Padded input fields</h2>
+
+<form method="POST" action="<?= $block->getBaseUrl() ?>demo\Index\Save">
+    <label for="fname">First Name</label>
+    <input hidden name="demo_id" value="<?= $post->getId()?>"/>
+    <input style="width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;" type="text" id="fname" name="name" value="<?= $post->getName()?>">
+
+     <input style=" width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;" type="submit" value="Submit">
+</form>

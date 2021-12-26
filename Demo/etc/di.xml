@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+     <type name="AHT\Demo\Controller\Index\Index">
+        <plugin name="AHT_demo_plugin"
+                type="AHT\Demo\Plugin\TestPlugin" sortOrder="10" />
+    </type>
+    <preference for="AHT\Demo\Api\PostRepositoryInterface" type="AHT\Demo\Model\PostRepository" />
+    <preference for="AHT\Demo\Api\Data\PostInterface" type="AHT\Demo\Model\Post" />
+
+</config>

@@ -1,0 +1,24 @@
+<table class="table table-bordered table-striped table-hover table-reponsive scroll">
+    <thead>
+    	<a href="<?php echo $block->getBaseUrl(); ?>demo\index\create\" class="btn btn-primary btn-xs pull-right">Create New Post</a>
+	  	<tr>
+		    <th>Id</th>
+		    <th>Name</th>
+		    <th></th>
+            <th></th>
+	    </tr>
+    </thead>
+    <?php
+    $posts = $block->getPosts();
+    
+    ?>
+     <?php foreach($posts as $key=>$post): ?>
+        <tr style= "border: 1px solid #dddddd; text-align: left; padding: 8px;">
+            <td><?= $post->getId(); ?></td>
+            <td><?= $post->getName(); ?></td>
+            <td><a href="<?=$block->getBaseUrl(); ?>demo\index\edit\id\<?= $post->getId()?>">Edit</a></td>
+            <td><a href="<?=$block->getBaseUrl(); ?>demo\index\delete\id\<?= $post->getId()?>">Delete</a></td>
+        </tr>
+
+    <?php endforeach; ?>
+</table>
