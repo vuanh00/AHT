@@ -1,0 +1,81 @@
+<?php
+$helper = $this->helper('\AHT\Customer\Helper\Data');
+$phone = $helper->getAllPhone();
+
+?>
+
+<head>
+    <style>
+        .phone_number {display: flex;}
+    </style>
+</head>
+<fieldset class="fieldset create account">
+    <legend class="legend"><span><?= $block->escapeHtml(__('Attribute Customer')) ?></span></legend><br>
+    <div class="field companytype required">
+        <label for="companytype" class="label">Company type</label>
+        <div class="control">
+            <select id="companytype" name="companytype">
+                <option value="" disabled>Please select</option>
+                <option value="1">CBD Manufacturer</option>
+                <option value="2">CBD Brand and Marketing company</option>
+                <option value="3">CBD Extractor</option>
+                <option value="4">Other</option>
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="field required origanization_name" id="origanization_name">
+        <label for="origanization_name" class="label"><span><?= $block->escapeHtml(__('Organization Name')) ?></span></label>
+        <div class="control">
+            <input type="text" name="origanization_name" id="origanization_name" value="" title="" class="input-text">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="contact_phone_number" class="label"><span><?= $block->escapeHtml(__('Contact phone number')) ?></span></label>
+        <div class="control phone_number">
+
+            <select id="phone_code" style="width: 25%">
+                <?php
+                foreach ($phone['countries'] as $key => $value) :
+                ?>
+                    <option  value="<?= $value['code'] ?>"><?= $value['name'] . " (" . $value['code'] . ")" ?></option>
+                <?php
+                endforeach
+                ?>
+               
+            </select>
+            <input style="width: 75%" type="text" id="phone_number" value="" title="" class="input-text form_phone">
+        </div>
+        <input hidden name="contact_phone_number" id="contact_phone_number">
+    </div>
+
+</fieldset>
+<script>
+    require(['jquery'], function($) {
+        $(document).ready(function() {
+            $('#origanization_name').hide();
+
+            $('#phone_code').change(function() {
+                var code = $('#phone_code').val();
+                var phone = $('#phone_number').val();
+                $('#contact_phone_number').val('('+code+')' + phone);
+            });
+
+            $('#phone_number').change(function() {
+                var code = $('#phone_code').val();
+                var phone = $('#phone_number').val();
+                $('#contact_phone_number').val('('+code+')' + phone);
+            });
+
+            $('#companytype').change(function() {
+                if ($(this).val() == 4) {
+                    $('#origanization_name').show();
+
+                } else {
+                    $('#origanization_name').hide();
+                    $('#origanization_name').val('');
+                }
+            });
+        });
+    });
+</script>
