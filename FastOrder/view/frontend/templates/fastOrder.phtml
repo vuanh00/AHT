@@ -1,0 +1,17 @@
+<div id="fast-order" data-bind="scope:'fastorder'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#fast-order": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "fastorder": {
+                        "component": "AHT_FastOrder/js/fastorder",
+                        "template": "AHT_FastOrder/fastorder"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>

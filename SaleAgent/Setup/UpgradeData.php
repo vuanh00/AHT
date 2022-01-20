@@ -27,11 +27,11 @@ class UpgradeData implements UpgradeDataInterface
     {
         $setup->startSetup();
 
-        if ($context->getVersion() && version_compare($context->getVersion(), '1.0.23') < 0) {
+        if ($context->getVersion() && version_compare($context->getVersion(), '1.0.26') < 0) {
 
             $CustomerSetup = $this->CustomerSetupFactory->create(['setup' => $setup]);
             $CustomerSetup->addAttribute(
-                \Magento\Customer\Model\Customer::ENTITY,
+                'customer',
                 'is_sale_agent',
                 [
                     'type' => 'int',
@@ -45,7 +45,7 @@ class UpgradeData implements UpgradeDataInterface
                      'system' => false,
                     'is_used_in_grid' => 1,   //setting grid options
                     'is_visible_in_grid' => 1,
-                    // 'source' => \Magento\Eav\Model\Entity\Attribute\Source\Boolean::class
+                    'source' => \Magento\Eav\Model\Entity\Attribute\Source\Boolean::class
                     // 'type' => 'int',
                     // 'label' => 'Sale Agent',
                     // 'input' => 'boolean',
@@ -84,7 +84,7 @@ class UpgradeData implements UpgradeDataInterface
 
             $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
             $eavSetup->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
+                'catalog_product',
                 'commission_type',
                 [
                     'type' => 'varchar',

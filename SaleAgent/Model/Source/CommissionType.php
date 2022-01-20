@@ -14,7 +14,7 @@ class CommissionType extends AbstractSource implements SourceInterface, OptionSo
     {
         if (!$this->_options) {
             $this->_options = [
-                ['label' => __('None'), 'value' => static::VALUE_NONE],
+                ['label' => __('None'), 'value' => self::VALUE_NONE],
                 ['label' => __('Fixed'), 'value' => static::VALUE_FIXED],
                 ['label' => __('Percent'), 'value' => static::VALUE_PERCENT]
             ];

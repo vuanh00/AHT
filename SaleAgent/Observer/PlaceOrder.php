@@ -38,7 +38,7 @@ class PlaceOrder implements \Magento\Framework\Event\ObserverInterface
         foreach ($orderItemCollection as $item) {
             $post = $this->postFactory->create();
             $post->setId($order->getData('entity'));
-            $post->setOrderId($orderId);
+            $post->setOrderId($orderId[0]);
             # code...
             // $test = [
             // 'order_id' => $data['order_id'],

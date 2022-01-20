@@ -1,0 +1,14 @@
+{
+    "table_test": {
+        "column": {
+            "test_id": true,
+            "name": true,
+            "address": true,
+            "class_pike": true,
+            "pike": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

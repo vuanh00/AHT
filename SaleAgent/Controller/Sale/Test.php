@@ -19,18 +19,25 @@ class Test extends \Magento\Framework\App\Action\Action
     private $postRepository;
 
     /**
+     * @param \AHT\SaleAgent\Model\ResourceModel\Post\Collection
+     */
+    private $collection;
+
+    /**
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
        \Magento\Framework\App\Action\Context $context,
        \Magento\Framework\View\Result\PageFactory $pageFactory,
         \AHT\SaleAgent\Model\PostFactory $postFactory,
-        \AHT\SaleAgent\Model\PostRepository $postRepository
+        \AHT\SaleAgent\Model\PostRepository $postRepository,
+        \AHT\SaleAgent\Model\ResourceModel\Post\CollectionFactory $collection
     )
     {
         $this->_pageFactory = $pageFactory;
         $this->postFactory = $postFactory;
         $this->postRepository = $postRepository;
+        $this->collection = $collection;
         return parent::__construct($context);
     }
     /**
@@ -40,25 +47,11 @@ class Test extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        $post = $this->postFactory->create()->load(7);
-        // $post->setId($order->getData('entity'));
-        // $post->setId(1);
-        $post->setData('order_id',1465656);
-        $post->setData('order_item_id',"1");
-
-        $post->setData('order_item_sku',"1");
-
-        $post->setData('order_item_price',"1");
-
-        $post->setData('commission_type'," KimHTVTYH Anh");
-
-        $post->setData('commission_value',"2");
-        echo"<pre>";
-        print_r($post->getData());
-        $post->save();
-
-        // $this->postRepository->save($post);
-        
+       $abc = $this->collection->create();
+        echo $abc->getSelect()->__toString();
+       echo '<pre>';
+       var_dump($abc->getData());
+       die;
         return $this->_pageFactory->create();
     }
 }

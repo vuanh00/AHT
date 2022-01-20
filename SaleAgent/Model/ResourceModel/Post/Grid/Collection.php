@@ -14,14 +14,11 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
+        echo '1';
         $this->_init('AHT\SaleAgent\Model\Post\Grid', 'AHT\SaleAgent\Model\ResourceModel\Post\Grid');
     }
     
-    // protected function _initSelect()
-    // {
-    //     parent::_initSelect();
-    //     $
-    //     $this->getSelect()
-    //     ->join()
-    // }
+    
+
+    
 }

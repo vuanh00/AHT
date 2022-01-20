@@ -6,6 +6,7 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
+    
      <route url="/V1/testgetid/:PostId" method="GET">
         <service class="AHT\Demo\Api\PostRepositoryInterface" method="getById"/>
         <resources>
